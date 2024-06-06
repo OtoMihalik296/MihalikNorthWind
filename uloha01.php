@@ -166,7 +166,7 @@
     }
 
     echo "<h1>požiadavka 05</h1>";
-    $sql = "SELECT ContactName FROM Suppliers WHERE ContactName LIKE '%Manager%' ORDER BY ContactName";
+    $sql = "SELECT ContactName FROM Suppliers WHERE ContactTitle LIKE '%Manager%' ORDER BY ContactName";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         echo "<table><tr><th>Kontaktná osoba</th></tr>";
