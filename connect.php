@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "userdb";
-$password = "databaza";
+$username = "root";
+$password = "";
 $dbname = "northwindmysql";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

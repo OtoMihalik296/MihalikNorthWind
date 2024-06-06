@@ -114,7 +114,7 @@
     }
 
     echo "<h1>požiadavka 02</h1>";
-    $sql = "SELECT * FROM Customers ORDER BY Country, CustomerName";
+    $sql = "SELECT * FROM Customers ORDER BY Country, CompanyName";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         echo "<table><tr>";
