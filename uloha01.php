@@ -114,7 +114,7 @@
     }
 
     echo "<h1>požiadavka 02</h1>";
-    $sql = "SELECT * FROM Customers ORDER BY Country, CompanyName";
+    $sql = "SELECT * FROM Customers ORDER BY Country, CustomerName";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         echo "<table><tr>";
@@ -156,22 +156,22 @@
     }
 
     echo "<h1>požiadavka 04</h1>";
-    $sql = "SELECT COUNT(*) as TotalOrders FROM Orders WHERE YEAR(OrderDate) = 1997";
+    $sql = "SELECT COUNT(*) as TotalOrders FROM Orders WHERE YEAR(OrderDate) = 1995";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        echo "Objednávky v roku 1997: " . $row['TotalOrders'] . "<br>";
+        echo "Objednávky v roku 1995: " . $row['TotalOrders'] . "<br>";
     } else {
         echo "<p>Údaje sa nenašli</p>";
     }
 
     echo "<h1>požiadavka 05</h1>";
-    $sql = "SELECT FirstName, LastName FROM Employees WHERE Title LIKE '%Manager%' ORDER BY FirstName, LastName";
+    $sql = "SELECT ContactName FROM Suppliers WHERE ContactName LIKE '%Manager%' ORDER BY ContactName";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-        echo "<table><tr><th>Meno</th><th>Priezvisko</th></tr>";
+        echo "<table><tr><th>Kontaktná osoba</th></tr>";
         while ($row = $result->fetch_assoc()) {
-            echo "<tr><td>" . $row['FirstName'] . "</td><td>" . $row['LastName'] . "</td></tr>";
+            echo "<tr><td>" . $row['ContactName'] . "</td></tr>";
         }
         echo "</table>";
     } else {
@@ -179,7 +179,7 @@
     }
 
     echo "<h1>požiadavka 06</h1>";
-    $sql = "SELECT * FROM Orders WHERE OrderDate = '1997-05-19'";
+    $sql = "SELECT * FROM Orders WHERE OrderDate = '1995-09-28'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         echo "<table><tr>";
