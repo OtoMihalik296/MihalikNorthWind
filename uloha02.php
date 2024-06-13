@@ -117,21 +117,40 @@
     }
 
     // požiadavka 05
-    echo "<h1>Požiadavka 05</h1>";
-    $sql = "SELECT Orders.OrderID, Employees.FirstName, Employees.LastName
-            FROM Orders
-            JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
-            WHERE Orders.ShippedDate > '1995-12-31'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        echo "<table><tr><th>ID objednávky</th><th>Meno zamestnanca</th><th>Priezvisko zamestnanca</th></tr>";
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr><td>" . $row['OrderID'] . "</td><td>" . $row['FirstName'] . "</td><td>" . $row['LastName'] . "</td></tr>";
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $date = $_POST['shipped_date'];
+        
+        $date = $conn->real_escape_string($date);
+        
+        echo "<h1>Požiadavka 05</h1>";
+        $sql = "SELECT Orders.OrderID, Employees.FirstName, Employees.LastName
+                FROM Orders
+                JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+                WHERE Orders.ShippedDate > '$date'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            echo "<table><tr><th>ID objednávky</th><th>Meno zamestnanca</th><th>Priezvisko zamestnanca</th></tr>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr><td>" . $row['OrderID'] . "</td><td>" . $row['FirstName'] . "</td><td>" . $row['LastName'] . "</td></tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "<p>Údaje sa nenašli</p>";
         }
-        echo "</table>";
     } else {
-        echo "<p>Údaje sa nenašli</p>";
+        echo "<h1>Požiadavka 05</h1>";
     }
+    ?>
+
+    <form method="post" action="">
+        <label for="shipped_date">Vyberte dátum:</label>
+        <input type="date" id="shipped_date" name="shipped_date" required>
+        <input type="submit" value="Zobraziť objednávky">
+    </form>
+
+    <?php
 
     // požiadavka 06
     echo "<h1>Požiadavka 06</h1>";
