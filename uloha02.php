@@ -145,7 +145,7 @@
     ?>
 
     <form method="post" action="">
-        <label for="shipped_date">Vyberte dátum:</label>
+        <label for="shipped_date">Vyberte dátum objednávky:</label>
         <input type="date" id="shipped_date" name="shipped_date" required>
         <input type="submit" value="Zobraziť objednávky">
     </form>
