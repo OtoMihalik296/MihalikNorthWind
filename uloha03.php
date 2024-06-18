@@ -167,14 +167,14 @@
 
     // požiadavka 08
     echo "<h1>požiadavka 08</h1>";
-    $sql = "SELECT COUNT(DISTINCT Customers.CustomerID) AS TotalCustomers1997
+    $sql = "SELECT COUNT(DISTINCT Customers.CustomerID) AS TotalCustomers1996
             FROM Orders
             JOIN Customers ON Orders.CustomerID = Customers.CustomerID
-            WHERE YEAR(Orders.OrderDate) = 1997";
+            WHERE YEAR(Orders.OrderDate) = 1996";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        echo "<p>Celkový počet zákazníkov z 1997 objednávok je: " . $row['TotalCustomers1997'] . "</p>";
+        echo "<p>Celkový počet zákazníkov z 1996 objednávok je: " . $row['TotalCustomers1996'] . "</p>";
     } else {
         echo "<p>Údaje sa nenašli</p>";
     }
